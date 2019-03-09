@@ -1,0 +1,139 @@
+/*
+ * Copyright (c) 2017. 深圳一七网络科技有限公司. All rights reserved.
+ */
+
+apply plugin: 'com.android.application'
+
+project.ext {
+    tinker = [
+            // bugly热修复是否启用，默认true,
+            // 在开发时，如需使用install run快速调试应用，可设置为false，否则在设置中关闭install run
+            buglyTinkerEnable: true,
+
+            // 是否编译发布包，自动设置编译生成的文件；（直接使用“运行”启动应用时，设置为false,便于当clean项目时清空无用文件）
+            // true:编译后的文件可直接发布（即基线包），生成的文件位于：项目目录/tinker/bakApk/，后期打补丁包，基线包必须位于此目录下
+            // false:编译后的文件只能调试运行，生成的文件位于：项目目录/build/bakApk/
+            buildRelease     : false,
+
+            // 打补丁包时（buildTinkerPatchRelease），指定基线包的位置（{bakPath}/{baseApkDir}/xx.apk）
+            // 打完整release包时（assembleRelease）不要指定，否则导致生成文件名版本号不一致;
+            // 当buildRelease = false 时，此设置无效
+            baseApkDir       : '',
+
+            // 打完整发布包时的版本号，每次+1
+            versionCode      : 1,
+            // 版本名称,tinkerId也使用版本名称,构建基准包跟补丁包都要修改，
+            // 例：基准包2.0.52_Beta；补丁包2.0.52_Beta-1，即在版本号后增加补丁版本标识，递增
+            versionName      : '1.0.1_Beta',
+    ]
+}
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion//25
+    buildToolsVersion rootProject.ext.android.buildToolsVersion//25.0.2
+
+    defaultConfig {
+        applicationId "com.yiqi.zhiyuan"
+        minSdkVersion rootProject.ext.android.minSdkVersion//18
+        targetSdkVersion rootProject.ext.android.targetSdkVersion//25
+        versionCode tinker.versionCode
+        versionName tinker.versionName
+        ndk {
+            // 设置支持的SO库架构
+            abiFilters "armeabi"//, "armeabi-v7a"//,"arm64-v8a", //, "x86", "x86_64"
+        }
+        // dex突破65535的限制
+        multiDexEnabled true
+
+        //manifest相关占位符处理
+        manifestPlaceholders = [
+                //友盟
+                UMENG_APPKEY : "5770827ae0f55a037f000b0f",//友盟分享 appKey
+
+                //极光推送
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "d92d4b02b87672a351277ecc", //JPush上注册的包名对应的appKey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+    }
+    //应用签名配置
+    signingConfigs {
+        release {
+            storeFile file("../signkey/SuoZhangAppKey.jks")
+            storePassword "suozhang"
+            keyAlias "suozhangreleasekey"
+            keyPassword "suozhang"
+        }
+    }
+    buildTypes {
+        debug {
+            //debug调试模式，使用发布时一致的签名
+            signingConfig signingConfigs.release
+            //混淆
+            minifyEnabled false
+            //Zipalign优化
+            zipAlignEnabled true
+            //移除无用的resources文件
+            shrinkResources false
+            //使用公共库中的混淆配置文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), '../CommonFramework/proguard-rules.pro', 'proguard-rules.pro'
+        }
+        release {
+            signingConfig signingConfigs.release
+            //混淆
+            minifyEnabled true
+            //Zipalign优化
+            zipAlignEnabled true
+            //移除无用的resources文件
+            shrinkResources true
+
+            //使用公共库中的混淆配置文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), '../CommonFramework/proguard-rules.pro', 'proguard-rules.pro'
+        }
+    }
+
+    /* flavorDimensions 'versionCode'
+     //多渠道配置
+     productFlavors {
+         suozhang {}//掌控
+     }*/
+}
+
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':CommonFramework')
+
+    //ButterKnife 注解框架 在CommonFramework公共库中已引入，子module需要再次添加注解处理，否则不会自动生成代码
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    //Dagger IoC注入框架 在CommonFramework公共库中已引入，子module需要再次添加注解处理，否则不会自动生成代码
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    //极光推送
+    implementation rootProject.ext.dependencies["jpush"]
+    implementation rootProject.ext.dependencies["jpush-jcore"]
+
+
+    // 图片选择库 https://github.com/LuckSiege/PictureSelector
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.1.9'
+
+
+    //下拉刷新 https://github.com/scwang90/SmartRefreshLayout
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5'
+
+
+}
+configurations.all {
+    resolutionStrategy.eachDependency { details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                //这里写你想统一的版本是多少，前提是你sdk里有
+                details.useVersion '27.0.2'
+            }
+        }
+    }
+}
+
+// 依赖tinker插件脚本
+apply from: '../tinker-support.gradle'

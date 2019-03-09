@@ -1,0 +1,30 @@
+/*
+ * Copyright (c) 2017. 深圳一七网络科技有限公司. All rights reserved.
+ */
+
+
+
+
+
+//编译不同项目，在此修改project=“项目名称”即可，注意重新生成的.iml文件不要添加到SVN版本控制
+def project = ['All']
+
+initIncludeProject(project)
+
+/**
+ *
+ * 初始化项目，项目主Module及所包含的库,有新增Module或库时，在对应项目后包含进去即可
+ *
+ * @param project 项目主Module名称
+ */
+void initIncludeProject(def projects) {
+    for (def project : projects) {
+
+        //全部
+        if (project == 'All') {
+            include ':CommonFramework', ':zhiyuan'
+        }
+
+
+    }
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017. 深圳掌控网络有限公司. All rights reserved.
+  -->
+<resources>
+    <!-- ../packageName/files/下的所有文件，app升级文件目录../packageName/files/download/apk-->
+    <external-files-path
+        name="files"
+        path="."/>
+</resources>

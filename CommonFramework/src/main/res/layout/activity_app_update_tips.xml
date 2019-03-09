@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/bg_app_upgrade1">
+
+        <ImageButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:background="@color/transparent"
+            android:paddingRight="-20dp"
+            android:src="@drawable/ic_app_upgrade_exit"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff">
+
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="110dp"
+            android:layout_height="21dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_app_upgrade_ver"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="版本号"
+            android:textColor="#fff"
+            android:textSize="14sp"/>
+    </RelativeLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/view_background"
+        android:paddingTop="14dp">
+
+        <TextView
+            android:id="@+id/tv_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="更新内容"
+            android:textColor="#989898"
+            android:textSize="14sp"/>
+    </android.support.v4.widget.NestedScrollView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:background="@drawable/bg_app_upgrade2">
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="136dp"
+            android:layout_height="36dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_app_upgrade_btn_ok"
+            android:text="立即升级"
+            android:textColor="#fff"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/tv_network"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_ok"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"
+            android:text="网络状态：未知"
+            android:textColor="#fff"
+            android:textSize="14sp"/>
+    </RelativeLayout>
+
+</LinearLayout>

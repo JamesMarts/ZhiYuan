@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="16dp">
+
+    <TextView
+
+        android:id="@+id/tv_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/ic_error"
+        android:gravity="center_horizontal"
+        android:text="出错啦~"
+        android:drawablePadding="5dp"
+        android:textColor="#646464"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/btn_click"
+        android:layout_width="100dp"
+        android:layout_height="26dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/selector_btn_empty_view"
+        android:focusable="false"
+        android:text="重试"
+        android:textColor="#646464"
+        android:textSize="14sp"/>
+
+</LinearLayout>

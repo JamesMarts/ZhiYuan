@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--
+    1.colorPrimary: Toolbar导航栏的底色。
+     2.colorPrimaryDark：状态栏的底色，注意这里只支持Android5.0以上的手机。
+     3.textColorPrimary：整个当前Activity的字体的默认颜色。
+     4.android:windowBackground：当前Activity的窗体颜色。
+     5.colorAccent：CheckBox，RadioButton，SwitchCompat等控件的点击选中颜色
+     6.colorControlNormal：CheckBox，RadioButton，SwitchCompat等默认状态的颜色。
+     7.colorButtonNormal：默认状态下Button按钮的颜色。
+     8.editTextColor：默认EditView输入框字体的颜色。
+     -->
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--ActionBar的颜色。-->
+        <item name="colorPrimary">@color/primary_highlight</item>
+        <!--状态栏的颜色-->
+        <item name="colorPrimaryDark">@color/primary_highlight</item>
+        <!--EditText编辑时、RadioButton选中、CheckBox等选中时的颜色-->
+        <item name="colorAccent">@color/primary_highlight</item>
+        <!--EditText、RadioButton、CheckBox默认时的颜色-->
+        <item name="colorControlNormal">@color/text_secondary</item>
+        <item name="android:windowBackground">@color/window_background</item>
+
+    </style>
+
+
+    <!--Toolbar主题样式-->
+    <style name="BaseToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <!-- Toolbar标题颜色，PopupMenuItem颜色等，当单独设置时，覆盖此颜色-->
+        <item name="android:textColorPrimary">@color/primary_comparison</item>
+
+        <!--修改navigation icon的padding值-->
+        <item name="toolbarNavigationButtonStyle">@style/BaseToolbarNavigationButtonStyle</item>
+
+        <!--<item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>-->
+
+        <!--右边3个点的颜色，在设置actionOverflowButtonStyle属性后失效-->
+        <item name="android:textColorSecondary">@color/primary_comparison</item>
+
+        <!--ActionMenu 颜色-->
+        <item name="actionMenuTextColor">@color/primary_comparison</item>
+        <!--ActionMenu 文字大小-->
+        <item name="android:textSize">14sp</item>
+
+        <!--ActionMenu 的点击状态-->
+        <!--<item name="android:actionBarItemBackground">@drawable/menu_selector</item>-->
+
+        <!--PopupMenu中ListView的样式-->
+        <item name="android:dropDownListViewStyle">@style/BasePopupMenuDropDownListViewStyle</item>
+
+        <!-- 加入toolbar溢出【弹出】菜单的风格 ，需要同时在Toolbar 中设置app:popupTheme="@style/OverflowMenuStyle"-->
+        <item name="actionOverflowMenuStyle">@style/BaseToolbarPopupMenuTheme</item>
+
+    </style>
+    <!--Toolbar溢出菜单样式-->
+    <style name="BaseToolbarPopupMenuTheme" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
+
+        <!-- 是否覆盖锚点，默认为true，即盖住Toolbar -->
+        <item name="overlapAnchor">false</item>
+        <!-- 弹出层背景颜色 -->
+        <item name="android:popupBackground">@color/view_background</item>
+        <!-- 弹出层垂直方向上的偏移，即在竖直方向上距离Toolbar的距离，值为负则会盖住Toolbar -->
+        <item name="android:dropDownVerticalOffset">1px</item>
+        <!-- 弹出层水平方向上的偏移，即距离屏幕左边的距离，负值会导致右边出现空隙 -->
+        <item name="android:dropDownHorizontalOffset">0dp</item>
+        <!-- 设置弹出菜单文字颜色 -->
+        <item name="android:textColor">@color/text_primary</item>
+        <!--字体大小-->
+        <item name="android:textSize">14sp</item>
+
+        <!--PopuMenu中Item点击的效果-->
+        <!--<item name="android:selectableItemBackground">@drawable/bg_hintdialog_single_btn_selector</item>-->
+
+    </style>
+
+
+    <!--Toolbar标题样式-->
+    <style name="BaseToolbarTitleTextAppearance" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/primary_comparison</item>
+    </style>
+
+
+
+    <!-- PopupMenu ListView 样式 -->
+    <style name="BasePopupMenuDropDownListViewStyle" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
+        <item name="android:divider">@color/div_primary</item>
+        <item name="android:dividerHeight">1px</item>
+
+    </style>
+
+    <!--修改navigation icon的padding值-->
+    <style name="BaseToolbarNavigationButtonStyle" parent="@style/Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="android:minWidth">45dp</item><!--最小宽度 设0时，为图片大小-->
+        <item name="android:padding">5dp</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+
+    <!-- 提示Dialog类型Activity样式-->
+    <style name="DialogActivityTips" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--除去title-->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+        <item name="android:windowBackground">@android:color/transparent</item> <!--除去背景色-->
+    </style>
+
+    <!-- Dialog样式 透明-->
+    <style name="DialogTranslucent" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+    </style>
+
+    <!-- Dialog样式 半透明-->
+    <style name="DialogSemitransparent" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+    </style>
+</resources>

@@ -1,0 +1,99 @@
+/*
+ * Copyright (c) 2017. 深圳一七网络科技有限公司. All rights reserved.
+ */
+
+def support = "27.0.2"
+
+def baseRecyclerViewAdapterHelper = "2.9.34"  //https://github.com/CymChad/BaseRecyclerViewAdapterHelper
+
+def retrofit2 = "2.3.0"          // retrofit网络框架 https://github.com/square/retrofit
+
+def fastJson = "1.1.67.android"  // FastJson Json解析及反序列化工具 https://github.com/alibaba/fastjson
+
+def rxJava = "2.1.6"             // RxJava2.0.8  开源地址：https://github.com/ReactiveX/RxJava
+def rxAndroid = "2.0.1"          // RxAndroid2.0.1  开源地址：https://github.com/ReactiveX/RxAndroid
+def rxLifecycle = "2.2.1"   //2.1.0     //Rx内存泄露处理 https://github.com/trello/RxLifecycle/tree/2.x
+
+def butterKnife = "9.0.0-rc1"        // https://github.com/JakeWharton/butterknife
+def dagger2 = "2.14.1"         // https://github.com/google/dagger
+
+//def logger = "1.15"            // Logger Log打印工具类 开源地址：https://github.com/orhanobut/logger
+
+def glide = "4.5.0"              // 图片加载 https://github.com/bumptech/glide
+
+def guava = "22.0-android"              // 谷歌工具类 https://github.com/google/guava
+
+//Retrofit+RxJava+Degger2采用MVP架构
+project.ext {
+    //基础属性
+    android = [
+            compileSdkVersion: 27,
+            buildToolsVersion: "27.0.2",
+            applicationId    : "com.suozhang.framework",
+            minSdkVersion    : 26,
+            targetSdkVersion : 27,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    dependencies = [
+            //android-support
+            "appcompat-v7"                 : "com.android.support:appcompat-v7:${support}",
+            "design"                       : "com.android.support:design:${support}",
+            "recyclerview"                 : "com.android.support:recyclerview-v7:${support}",
+            "cardview"                     : "com.android.support:cardview-v7:${support}",
+
+            //BaseRecyclerViewAdapterHelper
+            "baseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:${baseRecyclerViewAdapterHelper}",
+
+            //RxJava
+            "rxjava"                       : "io.reactivex.rxjava2:rxjava:${rxJava}",
+            //RxAndroid
+            "rxandroid"                    : "io.reactivex.rxjava2:rxandroid:${rxAndroid}",
+
+            //RxLifecycle
+            "rxlifecycle-android"          : "com.trello.rxlifecycle2:rxlifecycle-android:${rxLifecycle}",
+            "rxlifecycle-components"       : "com.trello.rxlifecycle2:rxlifecycle-components:${rxLifecycle}",
+
+            //retrofit
+            "retrofit"                     : "com.squareup.retrofit2:retrofit:${retrofit2}",
+            "converter-scalars"            : "com.squareup.retrofit2:converter-scalars:${retrofit2}",
+            "adapter-rxjava"               : "com.squareup.retrofit2:adapter-rxjava2:${retrofit2}",
+            "okhttp3-logging-interceptor"  : "com.squareup.okhttp3:logging-interceptor:3.8.0",
+
+            //glide 图片加载
+            "glide"                        : "com.github.bumptech.glide:glide:${glide}",
+            "glide-compiler"               : "com.github.bumptech.glide:compiler:${glide}",
+            "glide-okhttp3-integration"    : "com.github.bumptech.glide:okhttp3-integration:${glide}",
+
+            //dagger
+            "dagger"                       : "com.google.dagger:dagger:${dagger2}",
+            "dagger-compiler"              : "com.google.dagger:dagger-compiler:${dagger2}",
+
+            //ButterBnife
+            "butterknife"                  : "com.jakewharton:butterknife:${butterKnife}",
+            "butterknife-compiler"         : "com.jakewharton:butterknife-compiler:${butterKnife}",
+
+            //fastJson
+            "fastjson-android"             : "com.alibaba:fastjson:${fastJson}",
+
+            // Logger Log打印工具类
+            //   "logger"                       : "com.orhanobut:logger:${logger}",
+
+            //轮播图 https://github.com/youth5201314/banner
+            "banner"                       : "com.youth.banner:banner:1.4.9",
+
+            //极光推送 https://www.jiguang.cn/push
+            "jpush"                        : "cn.jiguang.sdk:jpush:3.1.1",
+            "jpush-jcore"                  : "cn.jiguang.sdk:jcore:1.1.9",
+
+            //LeakCanary内存泄露检测工具 https://github.com/square/leakcanary
+            "leakcanary-android"           : "com.squareup.leakcanary:leakcanary-android:1.5",
+            "leakcanary-android-no-op"     : "com.squareup.leakcanary:leakcanary-android-no-op:1.5",
+
+            //工具类guava
+            "guava"                        : "com.google.guava:guava:${guava}",
+
+
+    ]
+}

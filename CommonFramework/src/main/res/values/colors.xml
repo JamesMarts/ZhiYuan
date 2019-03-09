@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--UI视觉颜色规范-->
+
+    <!--透明-->
+    <color name="transparent">#00000000</color>
+
+    <!--默认窗口背景色，全局默认主题背景色-->
+    <color name="window_background">#f2f2f2</color>
+    <!--View背景 一般做为View的背景色-->
+    <color name="view_background">#ffffff</color>
+
+    <!--主颜色，用于导航栏，状态栏背景及突出文字、按钮、图标等-->
+    <color name="primary_highlight">#12c7b6</color>
+    <!--对比色，使用主颜色时，用于文字的颜色-->
+    <color name="primary_comparison">#ffffff</color>
+
+    <!--主要文字颜色-->
+    <color name="text_primary">#282828</color>
+    <!--次要文字颜色-->
+    <color name="text_secondary">#989898</color>
+    <!--提醒文字颜色,醒目，突出金额等-->
+    <color name="text_remind">#ff534d</color>
+
+    <!--分割线颜色-->
+    <color name="div_primary">#c3c3c3</color>
+
+    <!--按钮提醒色-默认-->
+    <color name="btn_remind_nor">#fe7e13</color>
+    <!--按钮提醒色-按下-->
+    <color name="btn_remind_pre">#ed5c04</color>
+    <color name="comment_divider">#cccccc</color>
+
+</resources>

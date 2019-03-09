@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2017. 深圳一七网络科技有限公司-Moodd. All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:background="#FFFFFF"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:paddingBottom="20dp"
+    android:orientation="horizontal" >
+     <com.suozhang.framework.widget.pickerview.WheelView
+         android:id="@+id/year"
+         android:layout_width="wrap_content"
+         android:layout_weight="1"
+         android:layout_height="wrap_content" />
+
+     <com.suozhang.framework.widget.pickerview.WheelView
+         android:id="@+id/month"
+         android:layout_width="wrap_content"
+         android:layout_weight="1"
+         android:layout_height="wrap_content" />
+
+     <com.suozhang.framework.widget.pickerview.WheelView
+         android:id="@+id/day"
+         android:layout_width="wrap_content"
+         android:layout_weight="1"
+         android:layout_height="wrap_content" />
+
+     <com.suozhang.framework.widget.pickerview.WheelView
+         android:id="@+id/hour"
+         android:layout_width="wrap_content"
+         android:layout_weight="1"
+         android:layout_height="wrap_content"
+         />
+
+     <com.suozhang.framework.widget.pickerview.WheelView
+         android:id="@+id/min"
+         android:layout_width="wrap_content"
+         android:layout_weight="1"
+         android:layout_height="wrap_content" />
+</LinearLayout>
